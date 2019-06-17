@@ -1,0 +1,83 @@
+@font-face{
+    font-family: "Spongebob Font";
+    src: url("Some Time Later.otf");
+}
+body{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+div#login{
+    position: absolute;
+    align-items: center;
+    height: 75%;
+    width: 530px;
+    background-color: rgba(255, 255, 255, 0.87);
+    font-family: "Spongebob Font", 'Times New Roman', Times, serif;
+    font-weight:normal;
+    font-style:normal;
+    padding: 10px;
+    border-top: 5px rgba(92, 92, 92, 0.76) solid;
+    border-bottom: 5px rgba(92, 92, 92, 0.76) solid;
+}
+input#username{
+    position: absolute;
+    align-self: center;
+    padding-left: 5px;
+    margin-left: 13%;
+    height: 8%;
+    min-width: 70%;
+    background-color: rgb(255, 255, 255);
+    border: 2px rgba(0, 0, 0, 0.555) solid;
+    border-radius: 10px;
+}
+input#password{
+    position: absolute;
+    padding-left: 5px;
+    margin-left: 13%;
+    height: 8%;
+    min-width: 70%;
+    background-color: rgb(255, 255, 255);
+    border: 2px rgba(0, 0, 0, 0.555) solid;
+    border-radius: 10px;
+}
+#cashreg{
+    height: 150px;
+    width: 150px;
+    margin-left: 35%;
+}
+input#username:focus, input#password:focus{
+    border-color: #5ebe7e;
+    transition-duration: 0.3s;
+    transition-property: all;
+}
+input#login-button{
+    position: absolute;
+    padding-top: 5px;
+    margin-left: 33%;
+    height: 7%;
+    min-width: 30%;
+    background-color: rgba(50, 147, 119, 0.925);    
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    text-align: center;
+    transition-duration: 0.5s;
+}
+input#username:hover,input#password:hover{
+    background-color: rgb(238, 238, 238);
+    box-shadow: 1px 1px 0.5px rgba(175, 175, 175, 0.75);
+}
+input#login-button:hover{
+    background-color: rgba(67, 167, 137, 0.925); 
+    transition-duration: 0.5s;
+    transition-property: all;
+}
+a:visited{
+    color: black;
+}
+h{
+    position: absolute;
+}

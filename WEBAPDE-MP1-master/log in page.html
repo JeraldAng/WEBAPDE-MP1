@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>Krusty Katalog - Log In</title>
+        <style>
+            body{
+                width:100%;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                background-image: url("assets/kkkBG.jpg");
+            }
+            div#login{
+                position: absolute;
+                height: 230px;
+                width: 530px;
+                background-color: rgba(169, 253, 130, 0.877);
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                padding: 10px;
+                border: 3px rgba(0, 0, 0, 0.555) solid;
+            }
+            div#username-bar{
+                position: absolute;
+                display: inline-block;
+                margin-left: 5px;
+                height: 9%;
+                min-width: 70%;
+                background-color: rgb(233, 255, 248);
+                border: 3px rgba(0, 0, 0, 0.555) solid;
+                border-radius: 10px;
+            }
+            div#password-bar{
+                position: absolute;
+                display: inline-block;
+                margin-left: 9px;
+                height: 9%;
+                min-width: 70%;
+                background-color: rgb(233, 255, 248);
+                border: 3px rgba(0, 0, 0, 0.555) solid;
+                border-radius: 10px;
+            }
+            div#login-button{
+                position: absolute;
+                margin-left: 30%;
+                height: 10%;
+                min-width: 30%;
+                background-color: rgb(255, 190, 255);
+                border: 3px rgba(0, 0, 0, 0.555) solid;
+                text-align: center;
+            }
+            div#username-bar:hover,#password-bar:hover{
+                background-color: rgb(194, 207, 203);
+                box-shadow: 1px 1px 0.5px rgba(175, 175, 175, 0.75);
+            }
+            div#login-button:hover{
+                background-color: rgb(226, 168, 226);
+                box-shadow: 1px 1px 0.5px rgba(50, 50, 50, 0.75);
+            }
+            a:visited{
+                color: black;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        
+        <audio autoplay loop>
+            <source src="assets/SpongeBob Closing Theme Song.mp3" type="audio/mp3">
+        </audio>
+
+        <div id = "login">
+            <h1>Welcome to the Krusty Katalog!</h1><br>
+            username: 
+                <div id = "username-bar"></div><br><br>
+            password:
+                <div id = "password-bar"></div><br><br><br>
+            <a href = "log in page.html"><div id = "login-button">Log In</div></a>
+        </div>
+
+    </body>
+
+</html>

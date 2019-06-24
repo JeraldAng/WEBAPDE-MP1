@@ -1,30 +1,44 @@
-@font-face{
-    font-family: "Spongebob Font";
-    src: url("Some Time Later.otf");
-}
+@font-face {
+    font-family: 'some_time_laterregular';
+    src: url('some_time_later-webfont.woff2') format('woff2'),
+         url('some_time_later-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+} 
 body{
-    width:100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'some_time_laterregular';
+}
+div#contents{
+    margin:0 auto;
+    width: 80%;
+    height: 100%;
     display:flex;
     justify-content:center;
     align-items:center;
-    background-size: cover;
-    background-repeat: no-repeat;
 }
 div#login{
     position: absolute;
-    align-items: center;
-    height: 75%;
+    height: 70%;
+    min-height: 400px;
     width: 530px;
     background-color: rgba(255, 255, 255, 0.87);
-    font-family: "Spongebob Font", 'Times New Roman', Times, serif;
     font-weight:normal;
     font-style:normal;
     padding: 10px;
     border-top: 5px rgba(92, 92, 92, 0.76) solid;
     border-bottom: 5px rgba(92, 92, 92, 0.76) solid;
 }
+img.bubbles{
+    display: inline-block;
+    position: absolute;
+    height: 600px;
+    float: right;
+}
 input#username{
     position: absolute;
+    display: flex;
     align-self: center;
     padding-left: 5px;
     margin-left: 13%;
@@ -36,6 +50,7 @@ input#username{
 }
 input#password{
     position: absolute;
+    display: flex;
     padding-left: 5px;
     margin-left: 13%;
     height: 8%;
@@ -45,8 +60,8 @@ input#password{
     border-radius: 10px;
 }
 #cashreg{
-    height: 150px;
-    width: 150px;
+    height: 30%;
+    width: 30%;
     margin-left: 35%;
 }
 input#username:focus, input#password:focus{
@@ -78,6 +93,15 @@ input#login-button:hover{
 a:visited{
     color: black;
 }
-h{
-    position: absolute;
+h1, h2{
+    text-align: center;
+    text-decoration: underline;
+    transition-duration: 2s;
 }
+h1:hover{
+    font-size: 35px;
+    transition-duration: 2s;
+    transition-property: all;
+    color: rgba(50,50,50,1);
+}
+

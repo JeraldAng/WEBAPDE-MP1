@@ -1,12 +1,12 @@
 function validate(){
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
-    if (username == "Mr.Krabs" && password == "money"){
+    if (username == "admin" && password == "p@ssword"){
         alert ("Login successful. Welcome, Mr. Krabs!");
-        window.location = "test.html"; // Redirecting to other page.
+        window.location = "dashboard.html"; // Redirecting to other page.
         return false;
     }
-    else if (username=="Mr.Krabs" && password != "money"){
+    else if (username=="admin" && password != "p@assword"){
         alert("Password incorrect. Please try again.");
     }
     else if(username=="" || password==""){

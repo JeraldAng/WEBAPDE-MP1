@@ -1,8 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: skyblue;
-  font-family: 'Open Sans', Helvetica, sans-serif;
+  color: #fff;
+  font-family: Helvetica;
+    font-size: 24px;
   box-sizing: border-box;
 }
 
@@ -12,23 +13,22 @@ body {
   grid-template-rows: 50px 1fr 50px;
   grid-template-areas:
     'header'
-    'main'
-    ;
-    height: 100vh;
+    'main'  
+    'footer';
+  height: 100vh;
 }
 
 .menu-icon {
-  position: fixed; 
-  display: flex;
-  top: 5px;
-  left: 10px;
-  align-items: center;
-  justify-content: center;
-  background-color: deepskyblue;
-  border-radius: 50%;
+  position: absolute;
+  display: inline-block;
+  top: 15px;
+  margin-left: 50px;
+  height: 60px;
+  width: 60px;
+  border-radius: 20px;
+  border: 2px rgba(0, 0, 0, 0.555) solid;
   z-index: 1;
   cursor: pointer;
-  padding: 12px;
 }
 
 .header {
@@ -36,38 +36,30 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
-  background-color: #648ca6;
+  padding: 0 80px;
+  background-color: rgba(210, 215, 211, 1);
+    color: black;
 }
 
-/* Make room for the menu icon on mobile */
-.header__search {
-  margin-left: 42px;
-}
 
 .sidenav {
   grid-area: sidenav;
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 240px;
+  width: 210px;
   position: fixed;
   overflow-y: auto;
-  transition: all .6s ease-in-out;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
-  z-index: 2; /* Needs to sit above the hamburger menu icon */
-  background-color: darkblue;
+  background-color: lightcoral;
+  transition-duration: 0.5s;
 }
 
-
-.sidenav-close-icon {
-  position: absolute;
-  visibility: visible;
-  top: 8px;
-  right: 12px;
-  cursor: pointer;
-  font-size: 20px;
-  color: black;
+.sidenav:hover {
+    padding: 0 16px;
+    width: 220px;
+    transition-duration: 0.5s;
+    transition-property: all;
 }
 
 .sidenav-list {
@@ -77,7 +69,7 @@ body {
 }
 
 .sidenav-list-item {
-  padding: 20px 20px 20px 40px;
+  padding: 20px 20px 20px 20px;
   color: black;
 }
 
@@ -86,15 +78,128 @@ body {
   cursor: pointer;
 }
 
+/* bg color of the main */
 .main {
   grid-area: main;
-  background-color: #8fd4d9;
+  background-color: rgba(22, 160, 133, 1);
+  padding: 3%;
 }
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 20px;
+  height: 150px;
+  background-color: #e3e4e6;
+  color: slategray;
+}
+
+.footer {
+  grid-area: footer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  padding: 0 10px;
+  background-color: steelblue;
+}
+
+
+.grid-container {
+    grid-template-columns: 180px 1fr;
+    grid-template-areas:
+      "sidenav header"
+      "sidenav main"
+      "sidenav footer";
+  }
+
+  .header__search {
+      margin-left: 0px;
+  }
 
   .sidenav {
     position: relative;
   }
 
+.navigation{
+  grid-area: header;
+  display: flex;
+  float: right;
+  justify-content: space-between;
+  padding: 0px;
+  margin-left: 80%;
+    margin-bottom: 10px;
+}
 
+.logout-button{
+    color: white;
+    padding: 10px;
+    letter-spacing: 3px;
+    position: relative;
+    background-color: black;
+    width:115px;
+    margin-left: 70px;
+}
 
+.button {
+  float: right;
+  padding: 12px;
+  color: black;
+  width: 25px;
+  background-color: black;
+
+}
+
+a:hover {
+  width: 150px;
+}
+
+a:hover .logout{
+  opacity: .9;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header input[type=text] {
+  padding: 15px;
+  margin-top: 9px;
+  margin-right: 16px;
+    width: 500px;
+    height: 20px;
+  font-size: 18px;
+}
+
+h4{
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 5px;
+    text-decoration: underline;
+    margin-left: 8px;
+}
+
+#div_canvas{
+    padding: 20px;
+    margin-left: 30px;
+    position: absolute; 
+    width:700px; 
+    height:400px;
+}
+
+#div_table{
+    padding: 20px;
+    margin-left: 30px;
+    position: absolute; 
+    width:700px; 
+    height:400px;
+}
+
+#div_choose_file{
+    padding: 20px;
+    margin-left: 30px;
+    position: absolute; 
+    width:700px; 
+    height:400px;
 }

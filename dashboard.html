@@ -1,24 +1,34 @@
 <html>
     <head>
-            <link href="dashboard.css" type="text/css" rel="stylesheet">
-
+            <title>Welcome Mr. Krabs!</title>
+            <meta charset="utf-8"/>
+            <link href="css/dashboard.css" type="text/css" rel="stylesheet">
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script src="jquery/jquery.min.js"></script>
+            <script src="chart.js/Chart.js"></script>
+            <script src="chart.js/Chart.min.js"></script>
+            <script src = "js/dashboard.js"></script>
     </head>
     
-    
-    <style>
-    
-    </style>
-    
-    
-    
     <body>
-    
+        <iframe allow="autoplay" style="display:none" id="iframeAudio">
+        </iframe> 
+        <audio autoplay loop>
+            <source src="assets/dashmusic.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        
      <div class="grid-container">
-     <div class="menu-icon">
-     </div>
    
+    <div class="navigation">
+         
+         <a href="log in page.html">
+            <div class="logout-button">LOGOUT</div>
+	     </a>
+    </div>  
+         
   <header class="header">
-    <div class="header-search">Search...</div>
+    <input type="text" placeholder="Search..">
   </header>
 
   <aside class="sidenav">
@@ -26,19 +36,30 @@
     </div>
       
     <ul class="sidenav-list">
-      <li class="sidenav-list-item">Krustomers</li>
-      <li class="sidenav-list-item">Grubs</li>
-        
+        <img class="menu-icon" src = "assets/kkLOGO.jpg"/>
+        <h4>Krusty Katalog</h4><br>
+        &nbsp;Mr. Eugene Krabs
+      <li class="sidenav-list-item" id = "home">Home</li>
+      <li class="sidenav-list-item" id = "charts">Charts</li>
+      <li class="sidenav-list-item" id = "upload">Upload Files</li>
     </ul>
   </aside>
          
     <main class="main">
-
+        <div id = "div_table">
+            <p>Welcome to the Krusty Katalog! Please upload your json file to check the statistics of the Krusty Krab!</p>
+            <table id = ""></table>
+        </div>
+        <div id = "div_canvas" style="display:none">
+            <p>This is for charts page</p>
+            <canvas id="chart_div"></canvas>
+        </div>
+        <div id = "div_choose_file" style="display:none">
+            <input id="file-upload-button" type="file" />
+        </div>             
     </main>
          
     </div>
-      
-    
     </body>
-
 </html>
+

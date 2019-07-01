@@ -3,6 +3,8 @@
         <title>Krusty Katalog - Log In</title>
         <link href="css/log in page.css" type="text/css" rel="stylesheet">
         <script src="js/login.js"></script>
+        <script src="http://minime.stephan-brumme.com/files/jquery/jquery-3.1.1.min.js"></script>
+
     </head>
 
     <body style="background-image: url('assets/sky2.jpg')">
@@ -15,19 +17,27 @@
 
         <img class = "bubbles" src = "assets/bubbles.gif"/>
         <img class = "bubbles" src = "assets/bubbles.gif" style = "margin-left: 90%"/>
-
-        <div id = "contents">
+        
+       <div id = "contents">
             <div id = "login">
                 <h1>Welcome to the Krusty Katalog!</h1>
                 <div><img id = "cashreg" src = "assets/cash-register.png"/></div>
                 <h2>Please Log In to Enter!</h2>
-                <input id = "username" type="text" placeholder="Username" required="required"><br><br><br>
-                <input id = "password" type="password" placeholder="Password" required="required"><br><br><br>
-            <input id = "login-button" type = "button" value="Login" onclick = "validate()">
+                <input id = "username" type="text" placeholder="Username" required="required" onkeypress="validate(event)">
                 
+                <ul>
+                    <li id="user_icon"></li>
+                </ul>
+                <br><br><br>
+                <input id = "password" type="password" placeholder="Password" required="required" onkeypress="validate(event)">
+                <ul>
+                    <li id="pass_icon"></li>  
+                </ul>
+                <br><br><br>
+                <input id = "login-button" type = "button" value="Login" onclick = "validate(event)">
             </div>
-            
         </div>
+    
     </body>
 
 </html>

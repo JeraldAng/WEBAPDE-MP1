@@ -5,6 +5,13 @@
     font-weight: normal;
     font-style: normal;
 } 
+
+.sprite {
+    background-image: url("../assets/spritesheet.png");
+    background-repeat: no-repeat;
+    display: block;
+}
+
 body{
     background-size: cover;
     background-repeat: no-repeat;
@@ -36,11 +43,37 @@ img.bubbles{
     height: 600px;
     float: right;
 }
+
+#user_icon{
+    background-image:url("../assets/spritesheet.png"); 
+    display: inline-block;
+    position: absolute;
+    height: 30px;
+    width:30px;
+    margin-left: 69%;
+    margin-top: 2px;
+    background-position: 3px -2px;
+    list-style:none;
+}
+
+#pass_icon{
+    background-image:url("../assets/spritesheet.png");
+    display: inline-block;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    margin-left: 69%;
+    margin-top: -5px;
+    background-position: -177px -334px;
+    list-style:none;
+}
+
 input#username{
     position: absolute;
     display: flex;
     align-self: center;
     padding-left: 5px;
+    padding-right: 23px;
     margin-left: 13%;
     height: 8%;
     min-width: 70%;
@@ -51,7 +84,9 @@ input#username{
 input#password{
     position: absolute;
     display: flex;
+    align-self: center;
     padding-left: 5px;
+    padding-right: 23px;
     margin-left: 13%;
     height: 8%;
     min-width: 70%;
@@ -64,6 +99,19 @@ input#password{
     width: 30%;
     margin-left: 35%;
 }
+
+#user-icon {
+    width: 64px;
+    height: 64px;
+    background-position: -20px -20px;
+}
+
+#pass-icon {
+    width: 64px;
+    height: 64px;
+    background-position: -20px -228px;
+}   
+
 input#username:focus, input#password:focus{
     border-color: #5ebe7e;
     transition-duration: 0.3s;
@@ -71,9 +119,10 @@ input#username:focus, input#password:focus{
 }
 input#login-button{
     position: absolute;
-    padding-top: 5px;
+    padding-top: 4px;
     margin-left: 33%;
     height: 7%;
+    margin-top: -4%;
     min-width: 30%;
     background-color: rgba(50, 147, 119, 0.925);    
     color: rgb(255, 255, 255);
@@ -81,6 +130,8 @@ input#login-button{
     text-align: center;
     transition-duration: 0.5s;
 }
+
+   
 input#username:hover,input#password:hover{
     background-color: rgb(238, 238, 238);
     box-shadow: 1px 1px 0.5px rgba(175, 175, 175, 0.75);

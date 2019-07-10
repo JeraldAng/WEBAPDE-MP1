@@ -14,10 +14,10 @@
             <script src="chart.js/Chart.js"></script>
             <script src="chart.js/Chart.min.js"></script>
 -->    
-        
     </head>
     
-    <body style="background-image: url('assets/bgDashboard.gif')">
+  <!--  <body style="background-image: url('assets/bgDashboard.gif')">-->
+    <body>
         <iframe allow="autoplay" style="display:none" id="iframeAudio">
         </iframe> 
         <audio id = "dashboard-audio" autoplay loop>
@@ -41,11 +41,11 @@
                 <li id="home_bar"></li>
                     <li class = "inline-block">This is the Home tab! A warm welcome to our guest! If you ever need to reread this help section, you can find me here!</li><br>
                     <li id="tables_bar"></li>
-                    <li class = "inline-block">This is the Tables tab! Here you can see the tabled version of your json upload!</li><br>
+                    <li class = "inline-block">This is the Tables tab! Here you can see the tabled version of your json upload! Note, only the qualitative values are read!</li><br>
                     <li id="charts_bar"></li>
                     <li class = "inline-block">This is the Charts tab! Here you can see your json upload in chart form! Note, only the quantitative values are read!</li><br>
                     <li id="upload_bar"></li>
-                    <li class = "inline-block">This is the Upload tab! Normally, you start here as you upload the data you want to be displayed! Only json files are read!</li><br>
+                    <li class = "inline-block">This is the Upload tab! You start here as you upload the data you want to be displayed! Only json files are read!</li><br>
                     <li id="settings_bar"></li>
                     <li class = "inline-block">This is the Settings tab! Adjust your preferences here! Also, if you'll be needing my help again, you can see me here too!</li><br>
                 <p>Welp, that's about it! I'll be heading to work now, but don't be shy to ask me again! See ya!</p>    
@@ -56,15 +56,13 @@
      <div class="grid-container">
    
     <div class="navigation">
-         
          <a href="log in page.html">
             <div class="logout-button">LOGOUT</div>
 	     </a>
     </div>  
          
   <header class="header">
-    <input type="text" id="searching" placeholder="Search..">
-    <input type="submit" id = "search_button" value="Search">
+    
   </header>
 
   <aside class="sidenav">
@@ -117,54 +115,103 @@
   </aside>
          
     <main class="main">
-        
         <div id = "div_home">
             <h1 class = "welcome1">TIME IS MONEY!!!</h1>
             <img id = "mrkrabs" src = "assets/mrkrabs.png"/>
-            <br>
             <h3 class = "welcome">Welcome to the Krusty Katalog! Please upload your json file to check the statistics of the Krusty Krab!</h3>
             <p class = "welcome">Need help? Why don't you <a class="trigger_popup_fricc">click here to have Spongebob guide you!</a></p>
         </div>
     
         <div id = "div_table" style="display:none">
-            <p class = "no_data">Looks like you don't have any tables yet! Upload a json file to see some tables!</p>
+            <img class="krusty_logo" style="display:none" src = "assets/kkLOGO.jpg"/>
+            <p class = "no_data">Shiver me timbers! Looks like you don't have any tables yet! Upload a json file to see some tables!</p>
             <img id = "mrkrabs_sad" class = "no_data" src = "assets/mrkrabs_sad.gif"/>
-            <input id = "date_picker" class = "yes_data" style="display:none" type= "date">
-                <p class = "yes_data" style="display:none">Choose a specific date to filter the table! </p>
-            <table id = "table"></table>
+           <div id = "table_header" style="display:none">
+               <div id = "table_header_top">
+                   <ul id = "ul_top">
+                       <li id = "li_top_1">
+                            <p class = "yes_data" style="display:none">Choose a specific date to filter the table! </p>
+                       </li>
+                       <li id = "li_top_2">
+                            <p class = "yes_data" style= "display: none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Try searching for keywords!</p>
+                       </li>
+                   </ul>
+
+               </div>
+               
+               <div id = "table_header_bottom">
+                   <ul id = "ul_bottom">
+                       <li id = "li_bottom_1">
+                            <input id = "date_picker" class = "yes_data" style="display:none" type= "date" autocomplete="off">
+                       </li>
+                       <li id = "li_bottom_2">
+                           <ul id = "ul_search">
+                                <li id="li_search_bar">
+                                    <input class = "yes_data" style="display:none" type="text" id="searching" placeholder="Search.." autocomplete="off">
+                                </li>
+                                <li id="li_search_button">
+                                    <input class = "yes_data" style="display:none" type="submit" id = "search_button" value="Search">
+                                </li>
+                           </ul>
+                       </li>
+                   </ul>
+               </div>
+            </div>
+            <table id = "table" style="display:none"></table>
         </div>
         <div id = "div_canvas" style="display:none">
-            <p class = "yes_data" style="display:none">Choose your Chart type! 
-                <select id="chart_type" autocomplete="off">
-                <option value="bar" selected="selected">Bar</option>
-                <option value="radar">Radar</option>
-                <option value="line">Line</option>
-                <option value="polarArea">Polar Area</option>
-            </select>
-                </p>
-            <p class = "no_data">Looks like you don't have any charts yet! Upload a json file to see some tables!</p>
+             <img class="krusty_logo" style="display:none" src = "assets/kkLOGO.jpg"/>
+            <p class = "no_data">Mother of pearl! Looks like you don't have any charts yet! Upload a json file to see some tables!</p>
             <img id = "mrkrabs_sad" class = "no_data" src = "assets/mrkrabs_sad.gif"/>
+            <br> <br>
+            <div id = "chart_header" class = "yes_data" style="display:none">
+                <ul id = "ul_chart_header">
+                <li id = "li_chart_header_left">
+                    <ul id = "ul_header_top">
+                        <li id = "li_header_left">
+                            <p class = "yes_data">Choose a specific date for the chart by day!
+                            <input id = "date_picker_2" class = "yes_data" style="display:none" type= "date" autocomplete="off"></p>
+                        </li>
+                        <li id = "li_header_right">
+                           <p class = "yes_data" style="display:none">Choose your Chart type! 
+                        <select id="chart_type" autocomplete="off">
+                            <option value="bar" selected="selected">Bar</option>
+                            <option value="bubble">Bubble</option>
+                            <option value="line">Line</option>
+                        </select>
+                        </p>
+                        </li>
+                    </ul>
+                </li>
+                </ul>
+            </div>
         </div>
         <div id = "div_choose_file" style="display:none">
             <div id = "file_cntr"><br>
-            <p class="uploadfile"> The Krusty Katalog utilizes a JSON file as its data input and maps them out into tables and charts. Add a valid JSON file to begin!</p><br>
-            <input id="file-upload-button" type="file" />
+            <p class="uploadfile"> The Krusty Katalog utilizes a JSON file as its data input and maps them out into tables and charts. Add a valid JSON file to begin!</p>
+            <input id="file-upload-button" type="file" autocomplete="off"/>
                 <img id = "mrkrabs_money"  src = "assets/mrkrabs_money.gif"/>
             </div>
             
         </div>
         <div id = "div_settings" style="display:none">
             <div id = "settings_cntr">
-                <br><p class ="welcome">Adjust the necessary settings to your own preferences!</p><br>
+                <br><p class ="c_settings">Adjust the necessary settings to your own preferences!</p>
+                <div class="slidecontainer">
+                    <p class = "b_settings" style = "font-family: 'some_time_laterregular'">Change to your preferred brightness! (website only)</p>
+                    <input id="volume-scrubber" type="range" min="1" max="100" value="50" class="slider"></div><br>
                 <input id = "mute-button" type = "button" value="Mute Music" onclick = "mute()"><br><br>
                 <input id = "help-button" type = "button" value="Help" class="trigger_popup_fricc">
             </div>
             
-        </div>             
+        </div> 
     </main>
          <footer class="footer">
-    <div class="footer-copyright"> &copy; 2019 ANG || LUA || TANDOC</div>
-    <div class="footer-signature">Made for WEBAPDE</div>
+    <div class="footer-copyright"> 
+        <div id="content">
+            &nbsp;&nbsp;&nbsp;&copy; 2019 ANG || LUA || TANDOC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Made for WEBAPDE
+        </div></div>
+    <!--<div class="footer-signature">Made for WEBAPDE</div>-->
   </footer>
          
     </div>      

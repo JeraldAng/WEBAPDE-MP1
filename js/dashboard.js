@@ -25,15 +25,15 @@ function mute(){
                 }
 }
 
-    
-    
 window.onload = function(){
 
 var ctx = document.getElementById("div_canvas");
 
 var num_charts = -1;
-var chart = [];
+var chart = []; 
 var title = ""; 
+var repeat = true;
+var store_last_date = "";
     
                 $("#file-upload-button").change(function(event){
                 var uploadedFile = event.target.files[0]; 
@@ -42,8 +42,19 @@ var title = "";
                 alert("File not read. Please upload a .json file!"); 
                 return false;
                 }
-                else
+                else{
                     alert("File read successfully!"); 
+                    num_charts = -1;
+                    chart = [];
+                    title = "";
+                    repeat = true;
+                    store_last_date = "";
+                    $("#table").empty();
+                    $('#date_picker').val('');
+                    $('#chart_type').val('bar');
+                    $('#searching').val('');
+                    $("canvas").remove();
+                }
                     
                 if (uploadedFile) {
                     var readFile = new FileReader();
@@ -51,8 +62,10 @@ var title = "";
                         var contents = e.target.result;
                         var json = JSON.parse(contents);
                         traverse(json,process);
+                        $('.krusty_logo').show();
                         $('#table').show();
                         $('.yes_data').show();
+                        $('#table_header').show();
                         $('.no_data').hide();
                     };
                     readFile.readAsText(uploadedFile);
@@ -67,15 +80,18 @@ var title = "";
                         $('#div_table').show().hide();
                         $('#div_settings').show().hide();
                     
+                         $(".wheel").toggleClass("wheel-fade");
+                    
                         $('#div_home').show();
                 });
     
                 $('#tables').on('click',function(){
-                        $('#div_canvas').show().hide();
+                       $('#div_canvas').show().hide();
                         $('#div_choose_file').show().hide();
                         $('#div_home').show().hide();
                         $('#div_settings').show().hide();
                     
+                        $(".wheel").toggleClass("wheel-fade"); 
                         $('#div_table').show();
                 });
                    
@@ -85,6 +101,7 @@ var title = "";
                         $('#div_home').show().hide();
                         $('#div_settings').show().hide();
                    
+                        $(".wheel").toggleClass("wheel-fade");
                         $('#div_canvas').show();
                });
                    
@@ -94,6 +111,7 @@ var title = "";
                         $('#div_home').show().hide();
                         $('#div_settings').show().hide();
                     
+                        $(".wheel").toggleClass("wheel-fade");
                         $('#div_choose_file').show();
                 });
     
@@ -103,10 +121,10 @@ var title = "";
                         $('#div_home').show().hide();
                         $('#div_choose_file').show().hide();
                     
+                        $(".wheel").toggleClass("wheel-fade");
                         $('#div_settings').show();
                 });
                 
-
                 function traverse(json,process) {
                     for (var i in json) {
                         process.apply(this,[i,json[i]]);  
@@ -124,22 +142,19 @@ var title = "";
                         title = key.split("_").join(" ");
                     }
                     else{
-                            // check to see if it is quantitative, if yes, check if no canvas was made for the category
+                            // check if no canvas was made for the category
                             if (typeof value !== "string" && document.getElementsByClassName(title).length === 0){
                             create_chart(title);
                             addData(chart[num_charts], key, value);
-                            $('#table tr:last').remove();
                             }
-                            // check quanti, if yes, check if canvas  exists
-                            else if (document.getElementsByClassName(title).length !== 0)
+                            // check if canvas  exists
+                            else if (typeof value !== "string" && document.getElementsByClassName(title).length !== 0)
                             addData(chart[num_charts], key, value);
-                            // must be quali, add to table
-                            else
+                            
+                            // add to table
                             addContent(key, value); 
                     }
                 }
-    
-                
 
                 function addContent(key, value) {
                     $('#table tr:last').append('<td>' + key.split("_").join(" ") + '<\/td> <td>' + value + '<\/td>');
@@ -158,6 +173,7 @@ var title = "";
                 chart.data.labels.push(label);
                 chart.data.datasets.forEach((dataset) => {
                     dataset.data.push(data);
+                    dataset.backgroundColor.push(getRandomPastelColor());
                 });
 
                 chart.update();
@@ -171,12 +187,12 @@ var title = "";
                                                 
                                                 num_charts++;
                                                 chart[num_charts] = new Chart(new_canvas,
-                                                      {"type":"bar",
+                                                      {"type": $("#chart_type").val(),
                                                        "data":{"labels":[],
                                                                "datasets":[{"label":key,
                                                                             "data":[],
                                                                             "fill":false,
-                                                                            backgroundColor: getRandomColor(),
+                                                                            backgroundColor: [getRandomPastelColor()],
                                                                             "borderWidth":1}]},
                                                        "options":{
                                                            responsive: false,
@@ -189,46 +205,141 @@ var title = "";
                                                new_canvas.style.display = "inline-block";
                 }
     
-                function getRandomColor() {
-                  var letters = '0123456789ABCDEF';
-                  var color = '#';
-                  for (var i = 0; i < 6; i++) {
-                    color += letters[Math.floor(Math.random() * 16)];
-                  }
+                function getRandomPastelColor() {
+                  var hue = Math.floor(Math.random() * 360);
+                  var color = 'hsl(' + hue + ', 100%, 80%)';
                   return color;
                 }
+    
+    
+                $("#date_picker").on("change", function() {
+                $("#date_picker_2").val($(this).val());
+                });
+    
+                $("#date_picker_2").on("change", function() {
+                $("#date_picker").val($(this).val()).change();
+                });
     
                 $("#chart_type").change(function () {
                 var ctype = this.value;
                     
-                var num_of_charts = chart.length - 1;
+                var num_of_charts = num_charts;
+                    console.log(num_charts);
                 while (num_of_charts >= 0){
                         var chart_data = chart[num_of_charts].data;
                         var chart_option = chart[num_of_charts].options;
-                        var ctx = document.getElementsByClassName(chart[num_of_charts].data.datasets[0].label);
+                        var ctx = document.getElementsByClassName(chart[num_of_charts].data.datasets[0].label)[0].getContext('2d');
                     
-//                        chart[num_of_charts].clear();
-//                        chart[num_of_charts].destroy();
-                        
+                    if(chart[num_of_charts] != undefined){ 
                         myChart = new Chart(ctx, {
                         type: ctype,
                         data: chart_data,
                         options: chart_option
                         });
-                    
-                    num_of_charts--;
-                       
+                        
+                        chart[num_of_charts].destroy();
+                        chart[num_of_charts] = myChart;
                     }
+                    
+                    num_of_charts--;                       
+                    }
+        
                 });
+    
+                 var table_data = document.getElementById("table");
     
                 $("#date_picker").change(function(event){
                     $("tr").show();
                     
                     var date_chosen = document.getElementById("date_picker").value;
-                    var table_data = document.getElementById("table");
 
                     if (date_chosen !== ''){
-                        // hide all table data and headers
+                        hideTableData();
+                        filterTableData(date_chosen);
+                        $('#searching').val('');
+                        
+                        create_chart_per_day();
+                    }
+                    
+                function create_chart_per_day(){
+                    
+                    if (repeat === false){
+                        console.log($('.'+ store_last_date).val())
+                         if ($('.'+ store_last_date).val() !== undefined){
+                             $('.'+ store_last_date).remove();
+                             num_charts--;
+                         }
+                    }                    
+                    
+                    var numOfVisibleRows = $('tr').filter(function() {
+                      return $(this).css('display') !== 'none';
+                    }).length;
+                    
+                    console.log(numOfVisibleRows);
+                    if (numOfVisibleRows !== 0){
+                        if (repeat === false){ 
+                        console.log(num_charts);
+                    }
+                   
+                    store_last_date = date_chosen;
+                        
+                    var Krabby_Pattie = $("tr").filter(function() {
+                            if($(this).text().indexOf("Krabby Pattie") !== -1 && $(this).css('display') !== 'none'){
+                                return $(this).html();
+                            } 
+                        }).length;
+                    
+                    var Krusty_Deluxe = $("tr").filter(function() {
+                            if($(this).text().indexOf("Krusty Deluxe") !== -1 && $(this).css('display') !== 'none'){
+                                return $(this).html();
+                            } 
+                        }).length;
+                    
+                    var Krusty_Combo = $("tr").filter(function() {
+                            if($(this).text().indexOf("Krusty Combo") !== -1 && $(this).css('display') !== 'none'){
+                                return $(this).html();
+                            } 
+                        }).length;
+                    
+                    create_chart(date_chosen);
+                        console.log("not empty")
+                    
+//                    for (i = 0; i < counter2.length - 1; i++)
+//                    addData(chart[chart.length -1], label[i], counter2[i]);
+                    
+                    addData(chart[chart.length -1], "number of sales", numOfVisibleRows);
+                    addData(chart[chart.length -1], "Krabby Patties sold", Krabby_Pattie);
+                    addData(chart[chart.length -1], "Krusty Deluxe sold", Krusty_Deluxe);
+                    addData(chart[chart.length -1], "Krusty Combo sold", Krusty_Combo);
+                    }
+                    
+                     repeat = false;
+                    
+                }
+                    
+                $("#search_button").click(function(event){
+                    $("tr").show();
+                    
+                    var search_key = document.getElementById("searching").value;
+                    
+                    if (search_key !== ''){
+                        hideTableData();
+                        filterTableData(search_key);
+                        $('#date_picker').val('');
+                    }
+                })
+                        
+                function filterTableData(key){
+                        // find table data that matches the date
+                        $("td").filter(function() {
+                            if($(this).text().indexOf(key) !== -1){
+                                return $(this).html();
+                            } 
+                        }).parent().show();  
+                }
+                    
+                function hideTableData(){
+                    // hide all table data and headers
                         $("td").filter(function() {
                             return $(this).text().indexOf("") !== -1;
                         }).parent().hide();
@@ -236,16 +347,7 @@ var title = "";
                         $("th").filter(function() {
                             return $(this).text().indexOf("") !== -1;
                         }).parent().hide();
-                        
-                        // find table data that matches the date
-                        $("td").filter(function() {
-                            if($(this).text().indexOf(date_chosen) !== -1){
-                                return $(this).html();
-                            } 
-                        }).parent().show();
-                        
-                        
-                    }
+                }
                                         
                 });
                 
@@ -268,9 +370,16 @@ var title = "";
                         $('#help_page1').show();
                         $('#help_page2').hide();
                     });
-
+    
+                $("#volume-scrubber").on('change', function(){
+                    var scrubber_value = document.getElementById("volume-scrubber").value;
+                        scrubber_value = parseFloat(scrubber_value) + 50;
+                    
+                    document.getElementsByTagName("body")[0].setAttribute("style","-webkit-filter:brightness(" + scrubber_value + "%)")
+                    
+                    });
+    
 }
-
 
 
 

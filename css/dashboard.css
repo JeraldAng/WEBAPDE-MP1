@@ -10,7 +10,7 @@ body {
   margin: 0;
   padding: 0;
   color: black;
-    font-size: 24px;
+  font-size: 24px;
   box-sizing: border-box;
 }
 
@@ -60,11 +60,6 @@ body {
     -webkit-animation: rotation 10s infinite linear;
 }
 
-.wheel-fade {
-    -webkit-transform:rotate(360deg);
-    -webkit-transition-duration: 2s;
-}
-
 @-webkit-keyframes rotation {
 		from {
 				-webkit-transform: rotate(0deg);
@@ -76,19 +71,52 @@ body {
 
 
 .header {
+  background-color: black;
+  background-position: 29% 55%;
   grid-area: header;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 80px;
-  background-color: rgba(210, 215, 211, 1);
-    color: black;
+  /*background-color: rgba(210, 215, 211, 1);*/
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  color: black;
+}
+
+#ul_chart_header, #ul_header_top{
+    list-style: none;
+}
+
+#li_header_left{
+    display: inline-block;
+    margin-left: 0%;
+}
+
+#li_header_right{
+    display: inline-block;
+    margin-left: 7%;
+}
+
+#li_chart_header_right{
+    margin-left: 16%;
+}
+
+#date_picker{
+    width: 200%;
+    height: 8%;
+    font-size: 15px;
+}
+
+#date_picker_2{
+    width: 20%;
+    height: 8%;
+    font-size: 15px;
 }
 
 #searching{
-    margin-left: 30px;
-    margin-bottom: 10px;
     font-family: 'some_time_laterregular';
+    width: 200%;
+    height: 8%;
 }
 
 #search_button{
@@ -97,11 +125,33 @@ body {
     font-weight: bold;
     font-family: 'some_time_laterregular';
     font-size: 21px;
-    margin-right: 220px;
+    font-size: 21px;
+    margin-left: 180%;
 }
 
-#date_picker{
-    float: right;
+#table_header{
+    margin-top: 10%;
+    margin-left:25px;
+    height: auto;
+    width:90%;
+}
+
+#ul_top, #ul_bottom, #ul_search{
+    list-style: none;
+}
+
+#li_top_1, #li_top_2, #li_search_bar, #li_search_button{
+    display: inline-block;
+}
+
+#li_bottom_1{
+    display: inline-block;
+    margin-left: 10%;
+}
+
+#li_bottom_2{
+    display: inline-block;
+    margin-left: 30%;
 }
 
 .sidenav {
@@ -111,10 +161,10 @@ body {
   height: 100%;
   width: 250px;
   position: fixed;
- /* box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);*/
+ /*box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);*/
   transition-duration: 0.5s;
   background-image: url(../assets/scroll.png);
-  background-position: 90% 80%;  /*96% 85%*/
+  background-position: 96% 85%;  /*96% 85%*/
 }
 
 .sidenav:hover {
@@ -238,6 +288,7 @@ body {
 #tables{
     display: inline-block;
     font-family: 'some_time_laterregular';
+    padding-top: 2px;
 }
 
 #charts{
@@ -259,9 +310,12 @@ body {
 .main {
   grid-area: main;
   padding: 3%;
-  background-image: url(../assets/bg2.gif);
+  background-image: url(../assets/back_middle.jpg);
+  height: 83%;
+  margin-top: 15px;
   background-size: cover;
   background-repeat: no-repeat;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
 }
 
 .main-header {
@@ -275,6 +329,7 @@ body {
 }
 
 .footer {
+  background-color: black;
   grid-area: footer;
   display: flex;
   margin-left: 5%;
@@ -282,7 +337,18 @@ body {
   justify-content: space-between;
   font-size: 12px;
   padding: 0 10px;
-  background-color: lightsteelblue;
+}
+
+.footer-copyright{
+    background-color: black;
+    height: 100%;
+    width: 14%;
+    color: white;
+    margin-left: 83%;
+}
+
+#content{
+    margin-top: 10px;
 }
 
 .grid-container {
@@ -306,50 +372,60 @@ body {
   display: flex;
   float: right;
   justify-content: space-between;
-  padding: 0px;
   margin-left: 80%;
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .logout-button{
+    font-family: 'some_time_laterregular';
     color: white;
     padding: 10px;
-    letter-spacing: 3px;
+    letter-spacing: 8px;
     position: relative;
     background-color: black;
     width:115px;
     margin-left: 70px;
 }
 
-#settings_cntr, #file_cntr{
+.logout-button:hover{
+    text-decoration: underline;
+}
+
+#file_cntr{
     position: relative;
     justify-content: center;
-    margin-left: 25%;
+    margin-left: 28%;
+    margin-top: 3%;
     width: 50%;
-    height: 70%;
-    background-color: wheat;
-    border: 1px solid black;
-    border-radius: 10px;
+    height: 92%;
+    /*background-color: wheat;*/
+    background-image: url(../assets/scroll_l.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*border: 1px solid black;
+    border-radius: 10px;*/
 }
 
-#mute-button{
+#settings_cntr {
+    position: relative;
+    justify-content: center;
+    margin-left: 28%;
+    margin-top: 3%;
+    width: 50%;
+    height: 92%;
+    background-image: url(../assets/scroll_l.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*background-color: wheat;
+    border: 1px solid black;
+    border-radius: 10px;*/
+}
+
+#mute-button, #help-button{
     position: absolute;
     font-family: 'some_time_laterregular';
     font-size: 18px;
-    margin-left: 26%;
-    height: 40px;
-    width: 300px;
-    background-color: #77dd77;
-    border: 1px solid black;
-    border-radius: 10px;
-    transition-duration: 0.5s;
-}
-
-#help-button{
-    position: absolute;
-    font-family: 'some_time_laterregular';
-    font-size: 18px;
-    margin-left: 26%;
+    margin-left: 28%;
     height: 40px;
     width: 300px;
     background-color: #77dd77;
@@ -372,11 +448,34 @@ body {
 
 }
 
-.welcome, .uploadfile, #file-upload-button{
+.welcome, #file-upload-button{
     font-family: 'some_time_laterregular';
     text-align: center;
-    margin-top: -1%;
-    color: azure
+    margin-top: 25px;
+    color: black;
+}
+
+.uploadfile{
+    font-family: 'some_time_laterregular';
+    text-align: center;
+    margin-top: 35px;
+    width: 80%;
+    margin-left: 55px;
+}
+
+.c_settings{
+    font-family: 'some_time_laterregular';
+    text-align: center;
+    margin-top: 65px;
+    width: 80%;
+    margin-left: 70px;
+}
+ 
+.b_settings{
+    font-family: 'some_time_laterregular';
+    text-align: center;
+    margin-top: 25px;
+    width: 75%;
 }
 
 .uploadfile{
@@ -388,6 +487,19 @@ body {
     margin-left: 25%;
     font-size: 18px;
 }
+
+.krusty_logo{
+    position: absolute;
+    display: inline-block;
+    top: 15px;
+    margin-left: 45%;
+    height: 90px;
+    width: 90px;
+    border-radius: 20px;
+    border: 2px rgba(0, 0, 0, 0.555) solid;
+    z-index: 1;
+}
+
 .welcome1{
     font-family: 'some_time_laterregular';
     text-align: center;
@@ -395,10 +507,17 @@ body {
     color: azure;
     font-size: 80px;;
 }
-.no_data, .yes_data{
+.no_data {
     font-family: 'some_time_laterregular';
     text-align: center;
-    color: azure;
+    margin-top: 110px;
+    /*color: azure;*/
+    color: black;
+}
+
+.yes_data{
+    font-family: 'some_time_laterregular';
+    text-align: center;
 }
 
 #chart_type{
@@ -414,8 +533,8 @@ body {
     align-content: center;
     height: 43%;
     width: 30%;
-    margin-left: 34%;
-    margin-top: 5%;
+    margin-left: 32%;
+    margin-top: 4%;
     margin-bottom: 1%;
 }
 
@@ -433,7 +552,6 @@ body {
     height: 43%;
     width: 30%;
     margin-left: 34%;
-    margin-top: 1%;
     margin-bottom: 1%;
 }
 
@@ -487,8 +605,8 @@ h5{
     margin-left: 5%;
     position: absolute; 
     width:75%; 
-    height:75%;
-    overflow-y: auto;
+    height:70%;
+    overflow-y: auto; 
 }
 
 canvas {
@@ -593,6 +711,45 @@ table th, table td{
 
 a.trigger_popup_fricc{
    text-decoration: underline;
-    color: rgb(118,164,209);
+    color: royalblue;
+}
+
+.slidecontainer {
+  width: 100%; 
+  margin-left: 15%;
+}
+
+.slider {   
+  -webkit-appearance: none;  
+  appearance: none;
+  width: 70%; 
+  height: 25px; 
+  background: #d3d3d3; 
+  outline: none; 
+  opacity: 0.7; 
+  -webkit-transition: .2s; 
+  transition: opacity .2s;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.slider:hover {
+  opacity: 1; 
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; 
+  appearance: none;
+  width: 25px;
+  height: 25px; 
+  background: #4CAF50; 
+  cursor: pointer; 
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px; 
+  background: #77dd77; 
+  cursor: pointer; 
 }
 

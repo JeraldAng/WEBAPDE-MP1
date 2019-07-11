@@ -10,6 +10,7 @@ body {
   margin: 0;
   padding: 0;
   color: black;
+    background-color: black;
   font-size: 24px;
   box-sizing: border-box;
 }
@@ -83,8 +84,16 @@ body {
   color: black;
 }
 
-#ul_chart_header, #ul_header_top{
+#chart_header{
+    width: 95%; 
+    margin-top: 55px;
+}
+
+#ul_header_top{
     list-style: none;
+    margin-left: 0%;
+    padding: 0px;
+    margin-right: 42px;
 }
 
 #li_header_left{
@@ -94,11 +103,7 @@ body {
 
 #li_header_right{
     display: inline-block;
-    margin-left: 7%;
-}
-
-#li_chart_header_right{
-    margin-left: 16%;
+    margin-left: 3%;
 }
 
 #date_picker{
@@ -311,7 +316,6 @@ body {
   grid-area: main;
   padding: 3%;
   background-image: url(../assets/back_middle.jpg);
-  height: 83%;
   margin-top: 15px;
   background-size: cover;
   background-repeat: no-repeat;
